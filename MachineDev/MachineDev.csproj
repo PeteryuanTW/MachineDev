@@ -10,4 +10,7 @@
   <ItemGroup>
     <Folder Include="logs\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonLibraryP\CommonLibraryP\CommonLibraryP.csproj" />
+  </ItemGroup>
 </Project>
