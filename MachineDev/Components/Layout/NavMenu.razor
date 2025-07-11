@@ -1,0 +1,29 @@
+﻿@rendermode InteractiveServer
+@inject MachineService machineService
+
+﻿<div id="sidebar">
+    <DxMenu Orientation="@Orientation.Vertical" CssClass="menu">
+        <Items>
+            <DxMenuItem NavigateUrl="/MachineSetting" Text="MachineSetting" ></DxMenuItem>
+            <DxMenuItem NavigateUrl="/TagSetting" Text="TagSetting" ></DxMenuItem>
+            <DxMenuItem Text="Machines" >
+                <Items>
+                    @foreach (var machine in machines)
+                    {
+                        <DxMenuItem NavigateUrl=@($"/MachineDashboard/{machine.Id}") Text=@(machine.Name)></DxMenuItem>
+                    }
+                </Items>
+            </DxMenuItem>
+        </Items>
+    </DxMenu>
+</div>
+
+    @code{
+    private List<Machine> machines = new();
+
+    protected override  async Task OnInitializedAsync()
+    {
+        machines = machineService.Machines;
+        await base.OnInitializedAsync();
+    }
+}
